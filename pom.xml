@@ -67,13 +67,6 @@
 						<goals>
 							<goal>build-image-no-fork</goal>
 						</goals>
-						<configuration>
-							<imageName>sboe0705/${project.artifactId}:${project.version}</imageName>
-							<image>
-								<tags>sboe0705/${project.artifactId}:latest</tags>
-							</image>
-						</configuration>
-					</execution>
 				</executions>
 			</plugin>
 		</plugins>
