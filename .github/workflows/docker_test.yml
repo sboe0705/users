@@ -13,3 +13,5 @@ jobs:
       run: docker pull sboe0705/users:latest && docker images
     - name: Tag Image
       run: docker tag sboe0705/users:latest ghcr.io/${{ github.repository_owner }}/users:latest && docker images
+    - name: Push Image
+      run: docker push ghcr.io/${{ github.repository_owner }}/users:latest
