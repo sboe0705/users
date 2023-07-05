@@ -1,0 +1,13 @@
+name: Docker (Test)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Pull Image
+      run: docker pull sboe0705/users:latest
