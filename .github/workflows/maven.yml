@@ -13,6 +13,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
 
     steps:
     - uses: actions/checkout@v3
@@ -24,8 +26,8 @@ jobs:
         cache: 'maven'
     - name: Build with Maven
       run: mvn -B package
-    - run: mkdir staging && cp target/*.war staging
-    - uses: actions/upload-artifact@v3
-      with:
-        name: Package
-        path: staging
+    - name: Publish Image
+      run: |
+        docker tag users:latest ghcr.io/${{ github.repository_owner }}/users:latest
+        echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
+        docker push ghcr.io/${{ github.repository_owner }}/users:latest
