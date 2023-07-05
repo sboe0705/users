@@ -62,6 +62,19 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>build-image-no-fork</goal>
+						</goals>
+						<configuration>
+							<imageName>sboe0705/${project.artifactId}:${project.version}</imageName>
+							<image>
+								<tags>sboe0705/${project.artifactId}:latest</tags>
+							</image>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
