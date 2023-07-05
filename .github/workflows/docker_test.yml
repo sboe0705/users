@@ -11,3 +11,5 @@ jobs:
     steps:
     - name: Pull Image
       run: docker pull sboe0705/users:latest
+    - name: Tag Image
+      run: docker tag sboe0705/users:latest ghcr.io/${{ github.repository_owner }}/users:latest
