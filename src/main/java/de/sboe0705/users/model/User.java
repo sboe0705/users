@@ -1,5 +1,6 @@
 package de.sboe0705.users.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -13,8 +14,10 @@ public class User {
 	@Id
 	private String id;
 
+	@Column(nullable = false)
 	private String firstName;
 
+	@Column(nullable = false)
 	private String lastName;
 
 	public String getId() {
