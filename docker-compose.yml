@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+  users-app:
+    image: 'users:latest'
+    container_name: users-app
+    depends_on:
+      users-db:
+        condition: service_healthy
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://users-db:5432/compose-postgres
+      - SPRING_DATASOURCE_USERNAME=compose-postgres
+      - SPRING_DATASOURCE_PASSWORD=compose-postgres
+    ports:
+      - 8081:8080
+  users-db:
+    image: 'postgres:16'
+    container_name: users-db
+    environment:
+      - POSTGRES_USER=compose-postgres
+      - POSTGRES_PASSWORD=compose-postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U compose-postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
